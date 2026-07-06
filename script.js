@@ -158,8 +158,11 @@ function animateBar(el){ el.style.width = el.dataset.width + '%'; }
   };
   function select(key){
     countries.forEach(c=>c.classList.remove('active'));
+    svg.querySelectorAll('.map-country-shape').forEach(s=>s.classList.remove('active'));
     const el = svg.querySelector('.map-country[data-country="'+key+'"]');
     if(el) el.classList.add('active');
+    const shape = svg.querySelector('.map-country-shape[data-country="'+key+'"]');
+    if(shape) shape.classList.add('active');
     const d = data[key];
     if(!d || !detail) return;
     const rows = d.brands.map(b=>'<div class="brand-row"><span>'+b[0]+'</span><span>'+b[1]+'</span></div>').join('');
@@ -169,6 +172,11 @@ function animateBar(el){ el.style.width = el.dataset.width + '%'; }
     const key = c.getAttribute('data-country');
     c.addEventListener('mouseenter', ()=>select(key));
     c.addEventListener('click', ()=>select(key));
+  });
+  svg.querySelectorAll('.map-country-shape').forEach(shape=>{
+    const key = shape.getAttribute('data-country');
+    shape.addEventListener('mouseenter', ()=>select(key));
+    shape.addEventListener('click', ()=>select(key));
   });
   const first = countries[0];
   if(first) select(first.getAttribute('data-country'));
