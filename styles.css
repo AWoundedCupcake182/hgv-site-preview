@@ -37,15 +37,18 @@ section{position:relative;}
 header{
   position:fixed;top:30px;left:50%;transform:translateX(-50%);z-index:300;
   width:calc(100% - 40px);max-width:1180px;
-  background:rgba(20,21,43,0.72);
-  backdrop-filter:blur(14px);
-  border:1px solid var(--line);
+  background:rgba(38,42,82,0.38);
+  backdrop-filter:blur(22px) saturate(180%);
+  -webkit-backdrop-filter:blur(22px) saturate(180%);
+  border:1px solid rgba(245,241,232,0.14);
   border-radius:100px;
+  box-shadow:0 8px 32px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.08);
   transition:border-color .3s, background .3s;
 }
 nav{
-  margin:0 auto;padding:10px 12px 10px 26px;
+  margin:0 auto;padding:14px 18px 14px 32px;
   display:flex;align-items:center;justify-content:space-between;
+  gap:24px;
 }
 .logo{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:600;font-size:19px;letter-spacing:0.02em;}
 .logo-mark{
