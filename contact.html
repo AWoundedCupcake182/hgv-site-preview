@@ -26,6 +26,7 @@
 </header>
 
 <div class="mobile-menu">
+  <button class="mobile-menu-close" aria-label="Close menu">✕</button>
   <a href="index.html">Home</a>
   <a href="services.html">Services</a>
   <a href="about.html">About Us</a>
@@ -49,50 +50,43 @@
     </div>
     <div class="map-grid reveal">
       <div>
-        <svg id="coverage-map" viewBox="0 0 640 460" xmlns="http://www.w3.org/2000/svg">
-          <!-- connecting lines -->
-          <g stroke="var(--line)" stroke-width="1.5" fill="none">
-            <line x1="320" y1="230" x2="180" y2="120"/>
-            <line x1="320" y1="230" x2="140" y2="230"/>
-            <line x1="320" y1="230" x2="200" y2="360"/>
-            <line x1="320" y1="230" x2="470" y2="330"/>
-            <line x1="320" y1="230" x2="500" y2="130"/>
+        <svg id="coverage-map" viewBox="0 0 1000 520" xmlns="http://www.w3.org/2000/svg">
+          <!-- stylized world silhouette (dimmed, non-highlighted regions) -->
+          <g class="continent">
+            <!-- South America -->
+            <path d="M255,300 C230,330 220,380 240,430 C255,465 280,480 300,460 C320,435 310,400 320,370 C328,345 310,315 285,300 C275,295 262,295 255,300 Z"/>
+            <!-- Europe -->
+            <path d="M480,90 C470,100 465,120 475,135 C490,148 520,150 540,138 C555,128 550,105 535,92 C515,80 495,82 480,90 Z"/>
+            <!-- Africa -->
+            <path d="M470,160 C450,190 445,230 455,270 C465,310 485,345 510,350 C535,345 545,300 540,260 C536,225 545,195 530,168 C510,148 485,148 470,160 Z"/>
+            <!-- Asia -->
+            <path d="M560,70 C540,95 545,130 570,150 C610,170 670,165 730,150 C790,135 850,120 870,95 C880,75 860,55 820,50 C750,42 680,45 620,55 C595,58 572,60 560,70 Z"/>
+            <!-- Australia -->
+            <path d="M790,340 C775,355 775,380 795,395 C825,408 865,400 880,380 C888,362 875,345 850,338 C825,332 802,330 790,340 Z"/>
           </g>
-          <!-- USA (hub) -->
+
+          <!-- North America base shape (highlighted region) -->
+          <g class="continent" fill="rgba(47,191,143,0.08)" stroke="rgba(47,191,143,0.3)">
+            <path d="M80,80 C60,110 55,150 70,185 C60,210 65,240 90,255 C110,268 130,260 150,270 C165,278 175,300 195,300 C220,298 235,270 250,245 C265,220 260,190 245,165 C255,140 250,110 225,90 C195,65 155,55 120,60 C105,62 90,68 80,80 Z"/>
+          </g>
+
+          <!-- USA -->
           <g class="map-country" data-country="usa">
-            <circle class="map-pulse" cx="320" cy="230" r="8"/>
-            <circle class="map-dot" cx="320" cy="230" r="11"/>
-            <text class="map-label" x="320" y="258" text-anchor="middle">USA</text>
+            <circle class="map-pulse" cx="150" cy="165" r="9"/>
+            <circle class="map-dot" cx="150" cy="165" r="11"/>
+            <text class="map-label" x="150" y="145" text-anchor="middle">USA</text>
+          </g>
+          <!-- Canada -->
+          <g class="map-country" data-country="canada">
+            <circle class="map-pulse" cx="150" cy="95" r="9"/>
+            <circle class="map-dot" cx="150" cy="95" r="8"/>
+            <text class="map-label" x="150" y="75" text-anchor="middle">CANADA</text>
           </g>
           <!-- Mexico -->
           <g class="map-country" data-country="mexico">
-            <circle class="map-pulse" cx="180" cy="120" r="8"/>
-            <circle class="map-dot" cx="180" cy="120" r="8"/>
-            <text class="map-label" x="180" y="102" text-anchor="middle">MEXICO</text>
-          </g>
-          <!-- Colombia -->
-          <g class="map-country" data-country="colombia">
-            <circle class="map-pulse" cx="140" cy="230" r="8"/>
-            <circle class="map-dot" cx="140" cy="230" r="8"/>
-            <text class="map-label" x="140" y="212" text-anchor="middle">COLOMBIA</text>
-          </g>
-          <!-- Argentina -->
-          <g class="map-country" data-country="argentina">
-            <circle class="map-pulse" cx="200" cy="360" r="8"/>
-            <circle class="map-dot" cx="200" cy="360" r="8"/>
-            <text class="map-label" x="200" y="382" text-anchor="middle">ARGENTINA</text>
-          </g>
-          <!-- Spain -->
-          <g class="map-country" data-country="spain">
-            <circle class="map-pulse" cx="500" cy="130" r="8"/>
-            <circle class="map-dot" cx="500" cy="130" r="8"/>
-            <text class="map-label" x="500" y="112" text-anchor="middle">SPAIN</text>
-          </g>
-          <!-- Brazil -->
-          <g class="map-country" data-country="brazil">
-            <circle class="map-pulse" cx="470" cy="330" r="8"/>
-            <circle class="map-dot" cx="470" cy="330" r="8"/>
-            <text class="map-label" x="470" y="352" text-anchor="middle">BRAZIL</text>
+            <circle class="map-pulse" cx="145" cy="230" r="9"/>
+            <circle class="map-dot" cx="145" cy="230" r="8"/>
+            <text class="map-label" x="145" y="252" text-anchor="middle">MEXICO</text>
           </g>
         </svg>
       </div>
@@ -136,7 +130,7 @@
         </div>
         <div class="contact-info-card">
           <div class="label">Markets</div>
-          <div class="value">USA · Mexico · Colombia · Argentina · Spain · Brazil</div>
+          <div class="value">USA · Mexico · Canada</div>
         </div>
 
         <div class="mini-stats">
@@ -202,7 +196,7 @@
         <h6>Contact</h6>
         <div class="flinks">
           <a href="mailto:sales@hispanicgrowthventures.com">sales@hispanicgrowthventures.com</a>
-          <span>USA · Mexico · Colombia · Argentina · Spain · Brazil</span>
+          <span>USA · Mexico · Canada</span>
         </div>
       </div>
     </div>

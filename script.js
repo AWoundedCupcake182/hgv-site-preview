@@ -2,18 +2,25 @@
 (function(){
   const burger = document.querySelector('.burger');
   const menu = document.querySelector('.mobile-menu');
+  const closeBtn = document.querySelector('.mobile-menu-close');
   if(!burger || !menu) return;
-  burger.addEventListener('click', ()=>{
+  function closeMenu(){
+    burger.classList.remove('open');
+    menu.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function toggleMenu(){
     burger.classList.toggle('open');
     menu.classList.toggle('open');
     document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
-  });
+  }
+  burger.addEventListener('click', toggleMenu);
+  if(closeBtn) closeBtn.addEventListener('click', closeMenu);
   menu.querySelectorAll('a').forEach(a=>{
-    a.addEventListener('click', ()=>{
-      burger.classList.remove('open');
-      menu.classList.remove('open');
-      document.body.style.overflow = '';
-    });
+    a.addEventListener('click', closeMenu);
+  });
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape') closeMenu();
   });
 })();
 
@@ -145,12 +152,9 @@ function animateBar(el){ el.style.width = el.dataset.width + '%'; }
   const detail = document.getElementById('mapDetail');
   const countries = svg.querySelectorAll('.map-country');
   const data = {
-    usa:{name:'United States', brands:[['KSK Mexico','Amazon US'],['Grisi','Amazon US, Walmart'],['Revance','Amazon US']]},
-    mexico:{name:'Mexico', brands:[['KSK Mexico','Amazon MX, Mercado Libre'],['Klass','Mercado Libre'],['Kevala','Amazon MX']]},
-    colombia:{name:'Colombia', brands:[['Kevala','Mercado Libre'],['Klass','Amazon CO']]},
-    argentina:{name:'Argentina', brands:[['Grisi','Mercado Libre']]},
-    spain:{name:'Spain', brands:[['Revance','Amazon ES']]},
-    brazil:{name:'Brazil', brands:[['Klass','Mercado Libre']]}
+    usa:{name:'United States', brands:[['Grisi','Amazon US'],['KSK','Amazon US'],['Kevala','Amazon US'],['Klass','Amazon US'],['LU','Amazon US']]},
+    mexico:{name:'Mexico', brands:[['KSK','Amazon MX'],['Kevala','Amazon MX'],['LU','Amazon MX'],['Revance','Amazon MX']]},
+    canada:{name:'Canada', brands:[['Kevala','Amazon CA']]}
   };
   function select(key){
     countries.forEach(c=>c.classList.remove('active'));
